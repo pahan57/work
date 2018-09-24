@@ -1,0 +1,1038 @@
+swagger: '2.0'
+info:
+  title: xxxxxx
+  description: xxxxxxx
+  version: 1.0.0
+host: api.example.com
+basePath: /v1
+schemes:
+  - http
+  - https
+paths:
+  /address:
+    get:
+      parameters:
+        - in: query
+          name: cityId
+          type: integer
+          required: true
+        - in: query
+          name: street
+          type: string
+          required: true
+        - in: query
+          name: house
+          type: string
+          required: true
+        - in: query
+          name: restaurantId
+          type: integer
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+                properties:
+                  result:
+                    type: integer
+                  street:
+                    type: string
+  /address/autocomplete:
+    get:
+      parameters:
+        - in: query
+          name: cityId
+          type: integer
+          required: true
+        - in: query
+          name: street
+          type: string
+          required: true
+        - in: query
+          name: house
+          type: string
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /auth/auth:
+    post:
+      parameters:
+        - in: query
+          name: token
+          type: string
+          required: true
+        - in: query
+          name: phone
+          type: string
+          required: false
+        - in: query
+          name: code
+          type: string
+          required: false
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /auth/auth/vk:
+    post:
+      parameters:
+        - in: query
+          name: userName
+          type: string
+          required: false
+        - in: query
+          name: password
+          type: string
+          required: false
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /auth/register:
+    post:
+      parameters:
+        - in: formData
+          consumes: multipart/form-data
+          name: file
+          type: file
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /auth/register/vk:
+    post:
+      parameters:
+        - in: formData
+          consumes: multipart/form-data
+          name: file
+          type: file
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /cart/check:
+    post:
+      parameters:
+        - in: formData
+          consumes: multipart/form-data
+          name: file
+          type: file
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /cart/create:
+    post:
+      parameters:
+        - in: formData
+          consumes: multipart/form-data
+          name: file
+          type: file
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /cart/get:
+    get:
+      parameters:
+        - in: query
+          name: orderId
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /cart/orders:
+    post:
+      parameters:
+        - in: query
+          name: token
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /classificator/cities:
+    get:
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /classificator/collection-themes:
+    get:
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /classificator/groups:
+    get:
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /classificator/tag-groups:
+    get:
+      parameters:
+        - in: query
+          name: cityId
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /classificator/tags:
+    get:
+      parameters:
+        - in: query
+          name: cityId
+          required: true
+          type: integer
+        - in: query
+          name: tagGroup
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /collection:
+    get:
+      parameters:
+        - in: query
+          name: id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /order/create:
+    post:
+      parameters:
+        - in: formData
+          name: id
+          required: true
+          type: file
+          consumes: multipart/form-data
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /pay:
+    post:
+      parameters:
+        - in: query
+          name: token
+          required: true
+          type: string
+        - in: query
+          name: cart
+          required: true
+          type: integer
+        - in: query
+          name: tokenPay
+          required: false
+          type: string
+        - in: query
+          name: system
+          required: true
+          type: string
+          description: apple | android | payture
+        - in: query
+          name: data
+          required: false
+          type: object
+          properties:
+            cardId:
+              type: integer
+            ammount:
+              type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /payture/add:
+    post:
+      parameters:
+        - in: query
+          name: token
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /payture/add/notification:
+    post:
+      parameters:
+        - in: query
+          name: VWUserLgn
+          type: string
+          required: true
+        - in: query
+          name: CardId
+          type: integer
+          required: true
+        - in: query
+          name: CardNumber
+          type: string
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /payture/checkCardAdd:
+    post:
+      parameters:
+        - in: query
+          name: token
+          type: string
+          required: true
+        - in: query
+          name: cardsCount
+          type: integer
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /plate:
+    get:
+      parameters:
+        - in: query
+          name: plate
+          type: integer
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /promoDetail:
+    get:
+      parameters:
+        - in: query
+          name: promoId
+          type: integer
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /recommendations:
+    get:
+      parameters:
+        - in: query
+          name: cityId
+          type: integer
+          required: true
+        - in: query
+          name: tagGroup
+          type: string
+          required: true
+        - in: query
+          name: tagId
+          type: string
+          required: true
+        - in: query
+          name: themes
+          type: string
+          required: false
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /restaurant:
+    post:
+      parameters:
+        - in: query
+          name: restaurantId
+          type: integer
+          required: true
+        - in: query
+          name: token
+          type: string
+          required: false
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /restaurantMenu:
+    get:
+      parameters:
+        - in: query
+          name: restaurantId
+          type: integer
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /restaurants:
+    get:
+      parameters:
+        - in: query
+          name: cityId
+          type: integer
+          required: true
+        - in: query
+          name: page
+          type: string
+          required: false
+        - in: query
+          name: tag
+          type: string
+          required: false
+        - in: query
+          name: results
+          type: string
+          required: false
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /search:
+    get:
+      parameters:
+        - in: query
+          name: search
+          type: string
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /sms:
+    get:
+      summary: Send or check sms code.
+      parameters:
+        - in: query
+          name: action
+          required: true
+          type: string
+          description: send_code | check_code
+        - in: query
+          name: type
+          required: true
+          type: string
+          description: auth | reg | update
+        - in: query
+          name: phone
+          required: true
+          type: string
+          description: phone number
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /token:
+    post:
+      parameters:
+        - in: query
+          name: tokenUser
+          type: string
+          required: true
+        - in: query
+          name: tokenPush
+          type: string
+          required: true
+        - in: query
+          name: os
+          type: string
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /user/getCards:
+    post:
+      parameters:
+        - in: query
+          name: token
+          type: string
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
+  /user/update:
+    post:
+      parameters:
+        - in: query
+          name: token
+          type: string
+          required: true
+        - in: query
+          name: phone
+          type: string
+          required: true
+        - in: query
+          name: code
+          type: string
+          required: true
+        - in: query
+          name: firstName
+          type: string
+          required: false
+        - in: query
+          name: lastName
+          type: string
+          required: false
+        - in: query
+          name: email
+          type: string
+          required: false
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              errors:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  title:
+                    type: string
+                  detail:
+                    type: string
+              data:
+                type: object
+              status:
+                type: boolean
