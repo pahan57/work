@@ -382,8 +382,7 @@ paths:
                   rangDiscount:
                     type: number
                   totalPrice:
-                    type:
-                      number
+                    type: number
                   price:
                     type: number
               status:
@@ -414,6 +413,52 @@ paths:
                     type: string
               data:
                 type: object
+                properties:
+                  id:
+                    type: integer
+                  status:
+                    type: string
+                  items:
+                    type: object
+                    properties:
+                      plate:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          title:
+                            type: string
+                          favorite:
+                            type: boolean
+                          tagGroup:
+                            type: integer
+                          image:
+                            type: string
+                          price:
+                            type: number
+                          description:
+                            type: string
+                          tags:
+                            type: object
+                            properties:
+                              title:
+                                type: string
+                              id:
+                                type: string
+                          shortTitle:
+                            type: string
+                          weight:
+                            type: string
+                          restaurant:
+                            type: integer
+                      plateId:
+                        type: integer
+                      qty:
+                        type: number
+                      price:
+                        type: number
+                  restaurantId:
+                    type: integer
               status:
                 type: boolean
   /cart/orders:
@@ -442,6 +487,23 @@ paths:
                     type: string
               data:
                 type: object
+                properties:
+                  cartId:
+                    type: ineger
+                  restaurantId:
+                    type: integer
+                  status:
+                    type: string
+                  address:
+                    type: string
+                  deliveryTime: 
+                    type: string
+                  payment:
+                    type: string
+                  total:
+                    type: number
+                  orderTime:
+                    type: string
               status:
                 type: boolean
   /classificator/cities:
