@@ -497,13 +497,13 @@ paths:
                   address:
                     type: string
                   deliveryTime: 
-                    type: string
+                    type: integer
                   payment:
                     type: string
                   total:
                     type: number
                   orderTime:
-                    type: string
+                    type: integer
               status:
                 type: boolean
   /classificator/cities:
@@ -526,7 +526,18 @@ paths:
                   detail:
                     type: string
               data:
-                type: object
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    restaurantCount:
+                      type: integer
+                    deliveryTime:
+                      type: integer
               status:
                 type: boolean
   /classificator/collection-themes:
